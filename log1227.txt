@@ -1,0 +1,63 @@
+[INFO] 2021-12-26 20:57:41,636 [    train.py:  263]:	Namespace(batch_size=2560, checkpoint_dir='', epoch=1000, hidden_size=512, log_path='log1227.txt', lr=0.001, normalize=True, sample_workers=16, samples=[25, 10], symmetry=True)
+[INFO] 2021-12-26 20:57:41,931 [    train.py:  145]:	Preprocess finish
+[INFO] 2021-12-26 20:57:41,931 [    train.py:  146]:	num of nodes: 2449029
+[INFO] 2021-12-26 20:57:41,931 [    train.py:  147]:	num of edges: 123718280
+[INFO] 2021-12-26 20:57:41,931 [    train.py:  148]:	dimension of feature: (2449029, 100)
+[INFO] 2021-12-26 20:57:43,327 [    train.py:  149]:	class of labels: 47
+[INFO] 2021-12-26 20:57:43,327 [    train.py:  150]:	Train Examples: 196615
+[INFO] 2021-12-26 20:57:43,327 [    train.py:  151]:	Val Examples: 39323
+[INFO] 2021-12-26 20:57:43,327 [    train.py:  152]:	Test Examples: 2213091
+[INFO] 2021-12-26 20:58:33,308 [    train.py:   77]:	Batch 10 train-Loss [3.1176023] train-Acc [0.7066406]
+[INFO] 2021-12-26 20:58:39,082 [    train.py:   77]:	Batch 20 train-Loss [2.7434597] train-Acc [0.7703125]
+[INFO] 2021-12-26 20:58:44,864 [    train.py:   77]:	Batch 30 train-Loss [2.522712] train-Acc [0.76523435]
+[INFO] 2021-12-26 20:58:51,037 [    train.py:   77]:	Batch 40 train-Loss [2.2740698] train-Acc [0.7835938]
+[INFO] 2021-12-26 20:58:56,818 [    train.py:   77]:	Batch 50 train-Loss [2.110833] train-Acc [0.7878906]
+[INFO] 2021-12-26 20:58:59,408 [    train.py:   77]:	Batch 60 train-Loss [1.907629] train-Acc [0.78867185]
+[INFO] 2021-12-26 20:59:02,018 [    train.py:   77]:	Batch 70 train-Loss [1.7605119] train-Acc [0.796875]
+[INFO] 2021-12-26 20:59:03,818 [    train.py:  219]:	Runing epoch:0	 train_loss:[2.40677498]	 train_acc:[0.75465249]
+[INFO] 2021-12-26 20:59:47,864 [    train.py:  228]:	Runing epoch:0	 val_loss:1.6718944	 val_acc:0.7951071891768177
+[INFO] 2021-12-26 21:00:34,100 [    train.py:   77]:	Batch 10 train-Loss [1.5702744] train-Acc [0.7855469]
+[INFO] 2021-12-26 21:00:40,123 [    train.py:   77]:	Batch 20 train-Loss [1.4440111] train-Acc [0.8035156]
+[INFO] 2021-12-26 21:00:45,960 [    train.py:   77]:	Batch 30 train-Loss [1.3443699] train-Acc [0.8144531]
+[INFO] 2021-12-26 21:00:51,562 [    train.py:   77]:	Batch 40 train-Loss [1.2724997] train-Acc [0.8101562]
+[INFO] 2021-12-26 21:00:57,151 [    train.py:   77]:	Batch 50 train-Loss [1.1812721] train-Acc [0.8140625]
+[INFO] 2021-12-26 21:00:59,729 [    train.py:   77]:	Batch 60 train-Loss [1.147594] train-Acc [0.8183594]
+[INFO] 2021-12-26 21:01:02,340 [    train.py:   77]:	Batch 70 train-Loss [1.1069604] train-Acc [0.8226563]
+[INFO] 2021-12-26 21:01:04,142 [    train.py:  219]:	Runing epoch:1	 train_loss:[1.30076093]	 train_acc:[0.81473438]
+[INFO] 2021-12-26 21:01:47,865 [    train.py:  228]:	Runing epoch:1	 val_loss:1.0742005	 val_acc:0.8244538819520383
+[INFO] 2021-12-26 21:02:33,235 [    train.py:   77]:	Batch 10 train-Loss [1.0237583] train-Acc [0.82421875]
+[INFO] 2021-12-26 21:02:38,937 [    train.py:   77]:	Batch 20 train-Loss [0.9846846] train-Acc [0.8316406]
+[INFO] 2021-12-26 21:02:45,102 [    train.py:   77]:	Batch 30 train-Loss [0.9472587] train-Acc [0.8316406]
+[INFO] 2021-12-26 21:02:51,377 [    train.py:   77]:	Batch 40 train-Loss [0.93676645] train-Acc [0.82890624]
+[INFO] 2021-12-26 21:02:56,846 [    train.py:   77]:	Batch 50 train-Loss [0.87217695] train-Acc [0.8394531]
+[INFO] 2021-12-26 21:02:59,419 [    train.py:   77]:	Batch 60 train-Loss [0.85042167] train-Acc [0.84882814]
+[INFO] 2021-12-26 21:03:02,037 [    train.py:   77]:	Batch 70 train-Loss [0.8157712] train-Acc [0.85898435]
+[INFO] 2021-12-26 21:03:03,834 [    train.py:  219]:	Runing epoch:2	 train_loss:[0.92748312]	 train_acc:[0.83774381]
+[INFO] 2021-12-26 21:03:47,948 [    train.py:  228]:	Runing epoch:2	 val_loss:0.8576519	 val_acc:0.8438064237214862
+[INFO] 2021-12-26 21:04:33,484 [    train.py:   77]:	Batch 10 train-Loss [0.8290987] train-Acc [0.8484375]
+[INFO] 2021-12-26 21:04:39,132 [    train.py:   77]:	Batch 20 train-Loss [0.83249307] train-Acc [0.8375]
+[INFO] 2021-12-26 21:04:44,980 [    train.py:   77]:	Batch 30 train-Loss [0.7833048] train-Acc [0.8539063]
+[INFO] 2021-12-26 21:04:51,050 [    train.py:   77]:	Batch 40 train-Loss [0.8029697] train-Acc [0.84453124]
+[INFO] 2021-12-26 21:04:56,792 [    train.py:   77]:	Batch 50 train-Loss [0.73679775] train-Acc [0.85664064]
+[INFO] 2021-12-26 21:04:59,369 [    train.py:   77]:	Batch 60 train-Loss [0.75324005] train-Acc [0.853125]
+[INFO] 2021-12-26 21:05:01,982 [    train.py:   77]:	Batch 70 train-Loss [0.78559923] train-Acc [0.840625]
+[INFO] 2021-12-26 21:05:03,770 [    train.py:  219]:	Runing epoch:3	 train_loss:[0.7820002]	 train_acc:[0.84775322]
+[INFO] 2021-12-26 21:05:47,520 [    train.py:  228]:	Runing epoch:3	 val_loss:0.7650578	 val_acc:0.8476972764031229
+[INFO] 2021-12-26 21:06:32,563 [    train.py:   77]:	Batch 10 train-Loss [0.7408078] train-Acc [0.8515625]
+[INFO] 2021-12-26 21:06:38,487 [    train.py:   77]:	Batch 20 train-Loss [0.7385572] train-Acc [0.85234374]
+[INFO] 2021-12-26 21:06:44,354 [    train.py:   77]:	Batch 30 train-Loss [0.70650625] train-Acc [0.8574219]
+[INFO] 2021-12-26 21:06:50,757 [    train.py:   77]:	Batch 40 train-Loss [0.7409951] train-Acc [0.84296876]
+[INFO] 2021-12-26 21:06:56,297 [    train.py:   77]:	Batch 50 train-Loss [0.6924899] train-Acc [0.86015624]
+[INFO] 2021-12-26 21:06:58,867 [    train.py:   77]:	Batch 60 train-Loss [0.7160809] train-Acc [0.8515625]
+[INFO] 2021-12-26 21:07:01,480 [    train.py:   77]:	Batch 70 train-Loss [0.690412] train-Acc [0.8574219]
+[INFO] 2021-12-26 21:07:03,279 [    train.py:  219]:	Runing epoch:4	 train_loss:[0.71550889]	 train_acc:[0.85265112]
+[INFO] 2021-12-26 21:07:47,417 [    train.py:  228]:	Runing epoch:4	 val_loss:0.7131422	 val_acc:0.8541057396434657
+[INFO] 2021-12-26 21:08:32,802 [    train.py:   77]:	Batch 10 train-Loss [0.69782037] train-Acc [0.85078126]
+[INFO] 2021-12-26 21:08:38,963 [    train.py:   77]:	Batch 20 train-Loss [0.68557173] train-Acc [0.85625]
+[INFO] 2021-12-26 21:08:44,835 [    train.py:   77]:	Batch 30 train-Loss [0.688941] train-Acc [0.8578125]
+[INFO] 2021-12-26 21:08:50,912 [    train.py:   77]:	Batch 40 train-Loss [0.69054174] train-Acc [0.85429686]
+[INFO] 2021-12-26 21:08:56,394 [    train.py:   77]:	Batch 50 train-Loss [0.6837842] train-Acc [0.8546875]
+[INFO] 2021-12-26 21:08:58,971 [    train.py:   77]:	Batch 60 train-Loss [0.6722365] train-Acc [0.84882814]
+[INFO] 2021-12-26 21:09:01,583 [    train.py:   77]:	Batch 70 train-Loss [0.65053725] train-Acc [0.8582031]
+[INFO] 2021-12-26 21:09:03,386 [    train.py:  219]:	Runing epoch:5	 train_loss:[0.67826256]	 train_acc:[0.85610966]
+[INFO] 2021-12-26 21:09:46,559 [    train.py:  228]:	Runing epoch:5	 val_loss:0.6910249	 val_acc:0.8535462706304199

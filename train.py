@@ -1,5 +1,6 @@
 from ogb_dataloader import PglNodePropPredDataset
 import os
+os.environ['CUDA_VISIBLE_DEVICES'] = '3'
 import argparse
 import time
 from functools import partial
@@ -16,8 +17,17 @@ from model import GraphSage
 from dataset import ShardedDataset, batch_fn
 from ogb_dataloader import PglNodePropPredDataset
 import logging
+import os
 
 from tb_paddle import SummaryWriter
+
+def resume(checkpoint_dir, model, optim):
+    log.info('resume from : %s' % checkpoint_dir)
+    layer_state_dict = paddle.load(os.path.join(checkpoint_dir, "net.pdparams"))
+    opt_state_dict = paddle.load(os.path.join(checkpoint_dir, "optim.pdopt"))
+
+    model.set_state_dict(layer_state_dict)
+    optim.set_state_dict(opt_state_dict)
 
 
 def add_log_to_file(log_path):
@@ -28,7 +38,7 @@ def add_log_to_file(log_path):
     fh.setFormatter(formatter)
     log.addHandler(fh)
 
-def train(dataloader, model, feature, criterion, optim, log_per_step=100):
+def train(dataloader, model, feature, criterion, optim, log_per_step=10):
     model.train()
 
     batch = 0
@@ -167,6 +177,10 @@ def main(args):
         learning_rate=args.lr,
         parameters=model.parameters(),
         weight_decay=0.001)
+    pre_step = 0
+    if args.checkpoint_dir != '':
+        resume(args.checkpoint_dir, model, optim)
+        pre_step += int(args.checkpoint_dir.split('_')[-1])
 
     feature = paddle.to_tensor(graph.node_feat["feat"])
 
@@ -199,27 +213,29 @@ def main(args):
     cal_test_acc = []
     cal_val_loss = []
     for epoch in range(args.epoch):
-        
+        epoch += pre_step
         train_loss, train_acc = train(train_loader, model, feature, criterion,
                                       optim)
         log.info("Runing epoch:%s\t train_loss:%s\t train_acc:%s", epoch,
                  train_loss, train_acc)
-        val_loss, val_acc = eval(val_loader, model, feature, criterion)
-        cal_val_acc.append(val_acc)
-        cal_val_loss.append(val_loss)
-        log.info("Runing epoch:%s\t val_loss:%s\t val_acc:%s", epoch, val_loss,
-                 val_acc)
+        # val_loss, val_acc = eval(val_loader, model, feature, criterion)
+        # cal_val_acc.append(val_acc)
+        # cal_val_loss.append(val_loss)
+        # log.info("Runing epoch:%s\t val_loss:%s\t val_acc:%s", epoch, val_loss,
+        #          val_acc)
         test_loss, test_acc = eval_ogb(test_loader, model, feature, criterion)
         cal_test_acc.append(test_acc)
         log.info("Runing epoch:%s\t val_loss:%s\t val_acc:%s", epoch, test_loss,
                  test_acc)
 
-        writer.add_scalar('train_loss', train_loss, epoch)
-        writer.add_scalar('val_loss', val_loss, epoch)
-        writer.add_scalar('val_acc', val_acc, epoch)
-        writer.add_scalar('test_acc', test_acc, epoch)
+        writer.add_scalar('loss/train_loss', train_loss, epoch)
+        writer.add_scalar('loss/test_loss', test_loss, epoch)
+        writer.add_scalar('acc/train_acc', train_acc, epoch)
+        writer.add_scalar('acc/test_acc', test_acc, epoch)
 
-        paddle.save(model.state_dict(), 'checkpoint/epoch_{}/net.pdparams'.format(epoch))
+        if epoch % 50 == 0:
+            paddle.save(model.state_dict(), 'checkpoint/epoch_{}/net.pdparams'.format(epoch))
+            paddle.save(optim.state_dict(), 'checkpoint/epoch_{}/optim.pdopt'.format(epoch))
         # layer_state_dict = paddle.load("linear_net.pdparams")
 
     log.info("Runs %s: Model: %s Best Test Accuracy: %f" %
@@ -236,14 +252,15 @@ if __name__ == "__main__":
         "--symmetry", action='store_true', help="undirect graph")
     parser.add_argument("--sample_workers", type=int, default=16)
     parser.add_argument("--epoch", type=int, default=10)
-    parser.add_argument("--hidden_size", type=int, default=768)
+    parser.add_argument("--hidden_size", type=int, default=512)
     parser.add_argument("--batch_size", type=int, default=32)
     parser.add_argument("--lr", type=float, default=0.001)
-    parser.add_argument('--samples', nargs='+', type=int, default=[50, 20])
+    parser.add_argument('--samples', nargs='+', type=int, default=[25, 10])
     parser.add_argument('--log_path',  type=str, default='log.txt')
+    parser.add_argument('--checkpoint_dir',  type=str, default='')
     args = parser.parse_args()
     add_log_to_file(args.log_path)
     log.info(args)
     main(args)
 
-# python train.py  --epoch 10  --normalize --symmetry --batch_size 256
+# python train.py  --epoch 1000  --normalize --symmetry --log_path log1227.txt --batch_size 2560

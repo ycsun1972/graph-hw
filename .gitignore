@@ -7,7 +7,7 @@ tmp_all/script/
 # Philly-realted #
 pt/
 .ptconfig
-
+feat.npy
 
 
 # Project-related   #
@@ -19,6 +19,7 @@ cache/*
 tmp*.py
 *pickle
 checkpoint/*
+checkpoint_nv/*
 dataset/*
 
 # compiled files #

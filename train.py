@@ -151,7 +151,7 @@ def main(args):
     log.info("Val Examples: %s" % len(split_idx['valid']))
     log.info("Test Examples: %s" % len(split_idx['test']))
 
-    writer = SummaryWriter('./log_tb')
+    writer = SummaryWriter('./log_tb_nv')
     
 
 
@@ -234,8 +234,8 @@ def main(args):
         writer.add_scalar('acc/test_acc', test_acc, epoch)
 
         if epoch % 50 == 0:
-            paddle.save(model.state_dict(), 'checkpoint/epoch_{}/net.pdparams'.format(epoch))
-            paddle.save(optim.state_dict(), 'checkpoint/epoch_{}/optim.pdopt'.format(epoch))
+            paddle.save(model.state_dict(), 'checkpoint_nv/epoch_{}/net.pdparams'.format(epoch))
+            paddle.save(optim.state_dict(), 'checkpoint_nv/epoch_{}/optim.pdopt'.format(epoch))
         # layer_state_dict = paddle.load("linear_net.pdparams")
 
     log.info("Runs %s: Model: %s Best Test Accuracy: %f" %
